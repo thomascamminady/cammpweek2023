@@ -27,7 +27,7 @@ Parse GPX files
 
 .. code-block:: bash
 
-   poetry runpython  automatic_climb_detection/gpx_to_csv.py --input data/TourDeFrance2022/
+   poetry run python  automatic_climb_detection/gpx_to_csv.py --input data/TourDeFrance2022/
 
 Data
 -------
