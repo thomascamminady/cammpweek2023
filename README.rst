@@ -15,6 +15,9 @@ To set up the project, simply run
 
    make init
 
+Data
+-------
+- Tour de France 2022 GPX files taken from Cyclingstage_
 
 Credits
 -------
@@ -24,3 +27,4 @@ This package was created with Cookiecutter_ and `thomascamminady/cookiecutter-py
 .. _Cookiecutter: https://github.com/audreyr/cookiecutter
 .. _`thomascamminady/cookiecutter-pypackage`: https://github.com/thomascamminady/cookiecutter-pypackage
 .. _`audreyr/cookiecutter-pypackage`: https://github.com/audreyr/cookiecutter-pypackage
+.. _Cyclingstage: https://www.cyclingstage.com/tour-de-france-2022-gpx/
