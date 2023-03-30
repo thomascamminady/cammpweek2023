@@ -17,7 +17,7 @@ def compute_distance(df: pd.DataFrame) -> pd.DataFrame:
         this_point = (row["latitude"], row["longitude"])
         distances.append(distances[-1] + great_circle(last_point, this_point).meters)
         last_point = this_point
-    df["distances"] = distances
+    df["distance"] = distances
     return df
 
 

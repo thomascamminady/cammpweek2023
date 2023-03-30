@@ -29,6 +29,15 @@ Parse GPX files
 
    poetry run python  automatic_climb_detection/gpx_to_csv.py --input data/TourDeFrance2022/
 
+
+Create map
+-------
+
+.. code-block:: bash
+
+   poetry run python automatic_climb_detection/create_map.py --input data/TourDeFrance2022
+
+
 Data
 -------
 - Tour de France 2022 GPX files taken from Cyclingstage_
