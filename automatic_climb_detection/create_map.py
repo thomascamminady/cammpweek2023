@@ -32,7 +32,9 @@ def create_map_file(
     chart = json.loads(
         vincent.Line(df["altitude"], width=800, height=400)  # type: ignore
         .axis_titles(
-            x=f"Distance [m] (Stage {os.path.basename(input)})", y="Altitude [m]"
+            x="row of csv file",
+            y="altitude"
+            # x=f"Distance [m] (Stage {os.path.basename(input)})", y="Altitude [m]"
         )
         .to_json()
     )
