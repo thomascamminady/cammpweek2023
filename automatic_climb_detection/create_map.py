@@ -30,7 +30,7 @@ def create_map_file(
     start_marker = features.Marker(start, popup=f"Start {os.path.basename(input)}")
     popup = folium.Popup(f"Start {os.path.basename(input)}")
     chart = json.loads(
-        vincent.Line(df["altitude"], width=800, height=400)
+        vincent.Line(df["altitude"], width=800, height=400)  # type: ignore
         .axis_titles(
             x=f"Distance [m] (Stage {os.path.basename(input)})", y="Altitude [m]"
         )
