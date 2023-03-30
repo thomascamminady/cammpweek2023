@@ -19,7 +19,7 @@ To set up the project, simply run
 Parse GPX files
 -------
 .. code-block:: bash
-  python  automatic_climb_detection/gpx_to_csv.py --input data/TourDeFrance2022/
+   python  automatic_climb_detection/gpx_to_csv.py --input data/TourDeFrance2022/
 
 Data
 -------
