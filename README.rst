@@ -15,11 +15,19 @@ To set up the project, simply run
 
    make init
 
+Next, activate the ``poetry`` environment via
+
+.. code-block:: bash
+
+   poetry shell
+
 
 Parse GPX files
 -------
+
 .. code-block:: bash
-   python  automatic_climb_detection/gpx_to_csv.py --input data/TourDeFrance2022/
+
+   poetry runpython  automatic_climb_detection/gpx_to_csv.py --input data/TourDeFrance2022/
 
 Data
 -------
