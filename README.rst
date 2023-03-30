@@ -15,6 +15,12 @@ To set up the project, simply run
 
    make init
 
+
+Parse GPX files
+-------
+.. code-block:: bash
+  python  automatic_climb_detection/gpx_to_csv.py --input data/TourDeFrance2022/
+
 Data
 -------
 - Tour de France 2022 GPX files taken from Cyclingstage_
