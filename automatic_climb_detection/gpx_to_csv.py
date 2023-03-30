@@ -7,6 +7,7 @@ from geopy.distance import great_circle
 
 
 def compute_distance(df: pd.DataFrame) -> pd.DataFrame:
+    """Compute the great circle distance using the lat/lon columns in the dataframe."""
     distances = [0.0]
     last_point = (df["latitude"][0], df["longitude"][0])
     for _, row in df[1:].iterrows():
@@ -18,6 +19,7 @@ def compute_distance(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def gpx_to_csv(input: str, output: str | None = None) -> None:
+    """Convert a gpx file to a csv file, optionally computing the distance field."""
     df = gpx_converter.Converter(input_file=input).gpx_to_dataframe()
 
     # Compute distance field from lat lon if not in data.
