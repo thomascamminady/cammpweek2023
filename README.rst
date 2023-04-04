@@ -31,7 +31,7 @@ Parse all files in a folder
    poetry run python  automatic_climb_detection/gpx_to_csv.py --input data/TourDeFrance2022/
 
 
-Parse only a single files
+Parse only a single file
 
 .. code-block:: bash
 
