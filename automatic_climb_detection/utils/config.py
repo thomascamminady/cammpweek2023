@@ -6,7 +6,7 @@ from pathlib import Path
 @dataclass
 class Config:
     foldername_root: Path = Path(__file__).parent.parent.parent.resolve()
-    foldername_log: Path = foldername_root / "logs"
+    foldername_log: Path = foldername_root / ".logs"
     filename_debug_log: Path = foldername_log / "debug.log"
 
     logger_level: int = logging.DEBUG
