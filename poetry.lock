@@ -309,7 +309,7 @@ css = ["tinycss2 (>=1.1.0,<1.2)"]
 name = "branca"
 version = "0.6.0"
 description = "Generate complex HTML+JS pages with Python"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
@@ -862,7 +862,7 @@ termcolor = "*"
 name = "folium"
 version = "0.14.0"
 description = "Make beautiful maps with Leaflet.js & Python"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.5"
 files = [
@@ -921,7 +921,7 @@ files = [
 name = "geographiclib"
 version = "2.0"
 description = "The geodesic routines from GeographicLib"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
@@ -933,7 +933,7 @@ files = [
 name = "geopy"
 version = "2.3.0"
 description = "Python Geocoding Toolbox"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
@@ -2462,7 +2462,7 @@ tests = ["pytest"]
 name = "pyarrow"
 version = "11.0.0"
 description = "Python library for Apache Arrow"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
@@ -2500,7 +2500,7 @@ numpy = ">=1.16.6"
 name = "pyclean"
 version = "2.7.0"
 description = "Pure Python cross-platform pyclean. Clean up your Python bytecode."
-category = "main"
+category = "dev"
 optional = false
 python-versions = "*"
 files = [
@@ -3238,7 +3238,7 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 name = "vega-datasets"
 version = "0.9.0"
 description = "A Python package for offline access to Vega datasets"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.5"
 files = [
@@ -3253,7 +3253,7 @@ pandas = "*"
 name = "vegafusion"
 version = "1.1.2"
 description = "Core tools for using VegaFusion from Python"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
@@ -3276,7 +3276,7 @@ embed = ["vegafusion-python-embed (==1.1.2)", "vl-convert-python (>=0.7.0)"]
 name = "vegafusion-python-embed"
 version = "1.1.2"
 description = "vegafusion-python-embed PyO3 Python Package"
-category = "main"
+category = "dev"
 optional = false
 python-versions = "*"
 files = [
@@ -3307,7 +3307,7 @@ files = [
 name = "vincent"
 version = "0.4.4"
 description = "A Python to Vega translator"
-category = "main"
+category = "dev"
 optional = false
 python-versions = "*"
 files = [
@@ -3342,7 +3342,7 @@ test = ["covdefaults (>=2.2.2)", "coverage (>=7.1)", "coverage-enable-subprocess
 name = "vl-convert-python"
 version = "0.7.0"
 description = "Convert Vega-Lite chart specifications to SVG, PNG, or Vega"
-category = "main"
+category = "dev"
 optional = false
 python-versions = ">=3.7"
 files = [
@@ -3545,4 +3545,4 @@ testing = ["big-O", "flake8 (<5)", "jaraco.functools", "jaraco.itertools", "more
 [metadata]
 lock-version = "2.0"
 python-versions = ">=3.8,<3.11"
-content-hash = "d75796ffdbfd3e781e6c0eb7e41ab167dd4b48b3faa3e37040846279f462c8ef"
+content-hash = "1fe8888debd23923825549b8c570ff22432d660a8a9ba561cc6ecedc3ab8952b"

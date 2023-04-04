@@ -1,5 +1,5 @@
 init:
-	code .
+	# code .
 	poetry config --local virtualenvs.create true
 	poetry config --local virtualenvs.in-project true
 	poetry env use 3.10

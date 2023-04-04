@@ -163,3 +163,5 @@ logs/
 *.DS_Store
 .venv/
 logs/
+.venv/
+logs/
