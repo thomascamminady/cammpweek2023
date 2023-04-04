@@ -16,6 +16,7 @@ fire = "^0.5.0"
 polars = "^0.16.16"
 pyarrow = "^11.0.0"
 geopy = "^2.3.0"
+ipympl = "^0.9.3"
 
 
 [tool.poetry.group.dev.dependencies]

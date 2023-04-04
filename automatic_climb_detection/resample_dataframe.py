@@ -2,6 +2,8 @@ import numpy as np
 import pandas as pd
 import polars as pl
 
+from automatic_climb_detection import logger
+
 
 def resample_dataframe_polars(
     df: pl.DataFrame,
@@ -43,6 +45,8 @@ def resample_dataframe_polars(
         on=[interpolation_column],
         how="left",
     ).sort(interpolation_column)
+
+    logger.info(f"Resampled from {len(df)} rows to {len(interpolated_df)} rows.")
 
     return interpolated_df
 
