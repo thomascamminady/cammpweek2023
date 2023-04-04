@@ -1,8 +1,9 @@
 import numpy as np
+import pandas as pd
 import polars as pl
 
 
-def resample_dataframe(
+def resample_dataframe_polars(
     df: pl.DataFrame,
     interpolation_column: str,
     interpolation_step: float,
@@ -46,7 +47,7 @@ def resample_dataframe(
     return interpolated_df
 
 
-def resample_dataframe_grouped(
+def resample_dataframe_grouped_polars(
     df: pl.DataFrame,
     interpolation_column: str,
     interpolation_step: float,
@@ -74,7 +75,7 @@ def resample_dataframe_grouped(
     """
     return pl.concat(
         [
-            resample_dataframe(
+            resample_dataframe_polars(
                 groupdf,
                 interpolation_column=interpolation_column,
                 interpolation_step=interpolation_step,
@@ -82,3 +83,30 @@ def resample_dataframe_grouped(
             for _, groupdf in df.groupby(group_column, maintain_order=True)
         ]
     )
+
+
+# Pandas wrapper below, but they just call polars.
+
+
+def resample_dataframe(
+    df: pd.DataFrame,
+    interpolation_column: str,
+    interpolation_step: float,
+) -> pd.DataFrame:
+    return resample_dataframe_polars(
+        pl.DataFrame(df), interpolation_column, interpolation_step
+    ).to_pandas()
+
+
+def resample_dataframe_grouped(
+    df: pd.DataFrame,
+    interpolation_column: str,
+    interpolation_step: float,
+    group_column: str,
+) -> pd.DataFrame:
+    return resample_dataframe_grouped_polars(
+        pl.DataFrame(df),
+        interpolation_column,
+        interpolation_step,
+        group_column,
+    ).to_pandas()

@@ -165,3 +165,5 @@ logs/
 logs/
 .venv/
 logs/
+
+data/TourDeFrance2022/*.csv
