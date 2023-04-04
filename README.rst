@@ -42,6 +42,10 @@ Data
 -------
 - Tour de France 2022 GPX files taken from Cyclingstage_
 
+Troubleshooting
+-------
+- I had to install `gdal` (on Mac via `brew install gdal`) to get `geopandas` running. But `geopandas` can otherwise also be removed.
+
 Credits
 -------
 
