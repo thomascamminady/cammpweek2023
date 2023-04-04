@@ -24,27 +24,23 @@ Next, activate the ``poetry`` environment via
 
 Parse GPX files
 -------
+Parse all files in a folder
 
 .. code-block:: bash
 
    poetry run python  automatic_climb_detection/gpx_to_csv.py --input data/TourDeFrance2022/
 
 
-Create map
--------
+Parse only a single files
 
 .. code-block:: bash
 
-   poetry run python automatic_climb_detection/create_map.py --input data/TourDeFrance2022
-
+   poetry run python  automatic_climb_detection/gpx_to_csv.py --input data/TourDeFrance2022/stage-1-gpxroute.gpx
 
 Data
 -------
 - Tour de France 2022 GPX files taken from Cyclingstage_
 
-Troubleshooting
--------
-- I had to install `gdal` (on Mac via `brew install gdal`) to get `geopandas` running. But `geopandas` can otherwise also be removed.
 
 Credits
 -------
