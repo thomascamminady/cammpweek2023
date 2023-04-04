@@ -39,7 +39,7 @@ Parse only a single files
 
 Data
 -------
-- Tour de France 2022 GPX files taken from Cyclingstage_
+- Tour de France 2022 GPX files taken from Cyclingstage_.
 
 
 Credits
