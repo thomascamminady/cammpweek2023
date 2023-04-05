@@ -1,0 +1,79 @@
+[
+  {
+    "objectID": "notebooks/Getting Started.html",
+    "href": "notebooks/Getting Started.html",
+    "title": "Loading the data",
+    "section": "",
+    "text": "import glob\nimport os\n\nimport matplotlib.pyplot as plt\nimport pandas as pd\n\nfrom automatic_climb_detection import logger\nfrom automatic_climb_detection.resample_dataframe import resample_dataframe\n\nRead a route from the Tour de France.\nIt might be easier for us to work with data that is always taken at the same interval.\nTherefore, we resample the original DataFrame to a new DataFrame that has latitude, longitude, and altitude information every 1000 meters.\n\nfiles = glob.glob(\"../data/TourDeFrance2022/*.csv\")\nfiles = sorted(files, key=lambda x: int(os.path.basename(x).split(\"-\")[1]))\n\nfile = files[12]\ndf = pd.read_csv(file, index_col=0)\ndf1km = resample_dataframe(df, interpolation_column=\"distance\", interpolation_step=1000)\n\n\nPlotting\nLet’s create a simple plot to visualize the data.\n\n%matplotlib widget\n\nfig, axs = plt.subplots(1, 2, figsize=(18, 6))\nplt.suptitle(file)\naxs[0].plot(df[\"longitude\"], df[\"latitude\"], \"-o\", label=\"High resolution data\")\naxs[0].plot(df1km[\"longitude\"], df1km[\"latitude\"], \"-x\", label=\"Low resolution data\")\naxs[0].set(xlabel=\"Longitude\", ylabel=\"Latitude\")\naxs[0].legend()\naxs[1].plot(df[\"distance\"], df[\"altitude\"], \"-o\", label=\"High resolution data\")\naxs[1].plot(df1km[\"distance\"], df1km[\"altitude\"], \"-x\", label=\"Low resolution data\")\naxs[1].set(xlabel=\"Distance [m]\", ylabel=\"Altitude [m]\")\naxs[1].legend()"
+  },
+  {
+    "objectID": "slides/slides.html#whats-a-climb",
+    "href": "slides/slides.html#whats-a-climb",
+    "title": "Automatic Climb Detection",
+    "section": "What’s a climb?",
+    "text": "What’s a climb?"
+  },
+  {
+    "objectID": "slides/slides.html#this-is-a-climb.",
+    "href": "slides/slides.html#this-is-a-climb.",
+    "title": "Automatic Climb Detection",
+    "section": "This is a climb.",
+    "text": "This is a climb."
+  },
+  {
+    "objectID": "slides/slides.html#and-what-about-this",
+    "href": "slides/slides.html#and-what-about-this",
+    "title": "Automatic Climb Detection",
+    "section": "And what about this?",
+    "text": "And what about this?"
+  },
+  {
+    "objectID": "slides/slides.html#to-split-or-not-to-split",
+    "href": "slides/slides.html#to-split-or-not-to-split",
+    "title": "Automatic Climb Detection",
+    "section": "To split or not to split?",
+    "text": "To split or not to split?"
+  },
+  {
+    "objectID": "slides/slides.html#to-split-or-not-to-split-1",
+    "href": "slides/slides.html#to-split-or-not-to-split-1",
+    "title": "Automatic Climb Detection",
+    "section": "To split or not to split?",
+    "text": "To split or not to split?"
+  },
+  {
+    "objectID": "slides/slides.html#real-data-is-messy.",
+    "href": "slides/slides.html#real-data-is-messy.",
+    "title": "Automatic Climb Detection",
+    "section": "Real data is messy.",
+    "text": "Real data is messy."
+  },
+  {
+    "objectID": "slides/slides.html#climb-detection",
+    "href": "slides/slides.html#climb-detection",
+    "title": "Automatic Climb Detection",
+    "section": "Climb detection",
+    "text": "Climb detection\n\n\nDevelop a climb detection algorithm:\n\nIn postprocessing, looking at the full ride.\nLive, looking at the full history ride.\nLive, looking at a fixed-size buffer with data."
+  },
+  {
+    "objectID": "slides/slides.html#climb-scoring",
+    "href": "slides/slides.html#climb-scoring",
+    "title": "Automatic Climb Detection",
+    "section": "Climb scoring",
+    "text": "Climb scoring\n\n\nDevelop a climb score:\n\nSteeper climbs are harder than gradual ones.\nLonger climbs are harder than shorter ones.\nBut what about steep and short vs. gradual and long?\n\nTour de France 2022:\n\nSame climb but different score.\nTakes exhaustion into account."
+  },
+  {
+    "objectID": "slides/slides.html#data-code",
+    "href": "slides/slides.html#data-code",
+    "title": "Automatic Climb Detection",
+    "section": "Data & Code",
+    "text": "Data & Code\n\n\n21 stages of the Tour de France 2022.\nCreate routes using OSM / Google Maps.\nCreate fake elevation profiles.\nPython code handles a lot of the IO."
+  },
+  {
+    "objectID": "slides/slides.html#be-creative",
+    "href": "slides/slides.html#be-creative",
+    "title": "Automatic Climb Detection",
+    "section": "Be creative",
+    "text": "Be creative\n\n\nDefinition of a climb is ambigous.\nSo is the climb score.\nDiscuss different ideas, try them out, and compare."
+  }
+]
