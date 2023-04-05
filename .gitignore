@@ -167,3 +167,5 @@ logs/
 logs/
 
 data/TourDeFrance2022/*.csv
+
+/.luarc.json

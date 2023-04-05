@@ -1,0 +1,142 @@
+---
+title: "Automatic Climb Detection"
+author: "Wahoo Fitness | Thomas Camminady & Tori Wuthrich"
+format:
+  revealjs:
+    slide-number: false
+    theme: [default, custom.scss]
+fontcolor: darkgrey
+logo: WahooOnly_BlackOnWhite_TransBkgd_Logo.png
+---
+
+
+```{python}
+import matplotlib.pyplot as plt
+
+figsize = (15, 5)
+lw = 4
+highlightcolor = "orange"
+color = "dimgrey"
+
+
+def clean(ax):
+    ax.set(xticks=[], yticks=[])
+    ax.grid(False)
+    ax.spines["top"].set_visible(False)
+    ax.spines["right"].set_visible(False)
+    ax.spines["bottom"].set_visible(False)
+    ax.spines["left"].set_visible(False)
+
+
+def get_fig_ax(figsize=figsize):
+    fig, ax = plt.subplots(figsize=figsize)
+    clean(ax)
+    return fig, ax
+
+
+```
+
+## What's a climb?
+```{python}
+# | label: whats-a-climb-1
+fig, ax = get_fig_ax()
+altitude = [0, 1, 3, 5, 9, 0, 4, 6, 5, 10, 3, 2, 3, 0, 0]
+ax.plot(range(len(altitude)), altitude, lw=lw, color=color)
+```
+
+## <span style="color:orange;">This</span> is a climb.
+```{python}
+# | label: whats-a-climb-2
+fig, ax = get_fig_ax()
+ax.plot(range(len(altitude)), altitude, lw=lw, color=color)
+ax.plot([0, 1, 2, 3, 4], [0, 1, 3, 5, 9], lw=lw, color=highlightcolor)
+```
+
+## And what about <span style="color:orange;">this</span>?
+```{python}
+# | label: whats-a-climb-3
+fig, ax = get_fig_ax()
+ax.plot(range(len(altitude)), altitude, lw=lw, color=color)
+ax.plot([11, 12], [2, 3], lw=lw, color=highlightcolor)
+```
+
+## <span style="color:orange;">To split</span> or not to split?
+```{python}
+# | label: whats-a-climb-4a
+fig, ax = get_fig_ax()
+ax.plot(range(len(altitude)), altitude, lw=lw, color=color)
+ax.plot([5, 6, 7], [0, 4, 6], lw=lw, color=highlightcolor)
+ax.plot([8, 9], [5, 10], lw=lw, color=highlightcolor)
+```
+
+## To split or <span style="color:orange;">not to split</span>?
+```{python}
+# | label: whats-a-climb-4b
+fig, ax = get_fig_ax()
+ax.plot(range(len(altitude)), altitude, lw=lw, color=color)
+ax.plot([5, 6, 7, 8, 9], [0, 4, 6, 5, 10], lw=lw, color=highlightcolor)
+```
+
+## Real data is <span style="color:orange;">messy</span>.
+```{python}
+# | label: whats-a-climb-5
+import scipy
+import numpy as np
+
+fig, ax = get_fig_ax()
+interpolant = scipy.interpolate.interp1d(
+    range(len(altitude)), altitude, fill_value=True
+)
+x = np.linspace(0, 14, 141)
+noise = 0.2 * np.random.randn(len(x))
+ax.plot(x, interpolant(x), lw=lw, color=color)
+ax.plot(x, interpolant(x) + noise, lw=lw, color=highlightcolor, alpha=0.7)
+```
+
+
+
+
+## Climb detection
+:::{.incremental}
+- Develop a climb detection algorithm:
+  - In postprocessing, looking at the <span style="color:orange;">full ride</span>.
+  - Live, looking at the <span style="color:orange;">full history ride</span>.
+  - Live, looking at a <span style="color:orange;">fixed-size buffer</span> with data.
+:::
+## Climb scoring
+:::{.incremental}
+- Develop a climb score:
+  - <span style="color:orange;">Steeper climbs are harder</span> than gradual ones.
+  - <span style="color:orange;">Longer climbs are harder</span> than shorter ones.
+  - But what about steep and short vs. gradual and long?
+
+- Tour de France 2022:
+  - Same climb but different score.
+  - Takes <span style="color:orange;">exhaustion</span> into account.
+:::
+
+
+## Data & Code
+:::{.incremental}
+- 21 stages of the Tour de France 2022.
+- Create routes using OSM / Google Maps.
+- Create fake elevation profiles.
+- Python code handles a lot of the IO.
+:::
+
+## Be creative
+- Definition of a climb is ambigous.
+![](ride_bart_no_legend.png)
+
+## Be creative
+- Definition of a climb is ambigous.
+![](ride_bart_legend.png)
+
+## Be creative
+- Definition of a climb is ambigous.
+- So is the climb score.
+
+## Be creative
+- Definition of a climb is ambigous.
+- So is the climb score.
+- <span style="color:orange;">Discuss different ideas, try them out, and compare.</span>
