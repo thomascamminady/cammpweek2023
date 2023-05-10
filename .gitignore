@@ -175,3 +175,5 @@ slides/slides_files
 /.quarto/
 .venv/
 logs/
+.venv/
+logs/
