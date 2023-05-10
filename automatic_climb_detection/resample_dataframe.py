@@ -65,7 +65,11 @@ def resample_dataframe_polars(
     return df_with_data_only_at_interpolation_points
 
 
-# Wrapper that just calls resample_dataframe_polars for each group.
+#######################################################################################
+#                       Everything below is just wrappers.                            #
+#######################################################################################
+
+
 def resample_dataframe_grouped_polars(
     df: pl.DataFrame,
     interpolation_column: str,
@@ -88,13 +92,16 @@ def resample_dataframe_grouped_polars(
     to_log : bool
         Whether or not to show additional logging info.
 
-
     Returns
     -------
     pl.DataFrame
         A dataframe with the same columns as the input dataframe and where
         `interpolation_column` is spaced as `interpolation_step` and all other
         data is interpolated onto that timeline.
+
+    Info
+    -------
+    This is a wrapper that just calls resample_dataframe_polars for each group.
     """
     return pl.concat(
         [
@@ -109,22 +116,44 @@ def resample_dataframe_grouped_polars(
     )
 
 
-# Wrapper that just calls resample_dataframe_polars for each group.
 def resample_dataframe(
     df: pd.DataFrame,
     interpolation_column: str,
     interpolation_step: float,
     to_log: bool = False,
 ) -> pd.DataFrame:
+    """Resamples a dataframe to obtain data at interpolation points.
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+        The dataframe to interpolate.
+    interpolation_column : str
+        Which numeric column to use for the interpolation points.
+    interpolation_step : float
+        Steps for the newly create interpolation points
+    to_log : bool
+        Whether or not to show additional logging info.
+
+    Returns
+    -------
+    pd.DataFrame
+        A dataframe with the same columns as the input dataframe and where
+        `interpolation_column` is spaced as `interpolation_step` and all other
+        data is interpolated onto that timeline.
+
+    Info
+    -------
+    This is a wrapper that just calls resample_dataframe_polars.
+    """
     return resample_dataframe_polars(
-        pl.DataFrame(df),
-        interpolation_column,
-        interpolation_step,
-        to_log,
+        df=pl.DataFrame(df),
+        interpolation_column=interpolation_column,
+        interpolation_step=interpolation_step,
+        to_log=to_log,
     ).to_pandas()
 
 
-# Wrapper that just calls resample_dataframe_grouped_polars for each group.
 def resample_dataframe_grouped(
     df: pd.DataFrame,
     interpolation_column: str,
@@ -132,10 +161,37 @@ def resample_dataframe_grouped(
     group_column: str,
     to_log: bool = False,
 ) -> pd.DataFrame:
+    """Groupwise resamples a dataframe to obtain data at interpolation points.
+
+    Parameters
+    ----------
+    df : pd.DataFrame
+        The dataframe to interpolate.
+    interpolation_column : str
+        Which numeric column to use for the interpolation points.
+    interpolation_step : float
+        Steps for the newly create interpolation points
+    group_column:str
+        The column over which to group
+    to_log : bool
+        Whether or not to show additional logging info.
+
+    Returns
+    -------
+    pd.DataFrame
+        A dataframe with the same columns as the input dataframe and where
+        `interpolation_column` is spaced as `interpolation_step` and all other
+        data is interpolated onto that timeline.
+
+    Info
+    -------
+    This is a wrapper that just calls resample_dataframe_grouped_polars.
+
+    """
     return resample_dataframe_grouped_polars(
-        pl.DataFrame(df),
-        interpolation_column,
-        interpolation_step,
-        group_column,
-        to_log,
+        df=pl.DataFrame(df),
+        interpolation_column=interpolation_column,
+        interpolation_step=interpolation_step,
+        group_column=group_column,
+        to_log=to_log,
     ).to_pandas()
