@@ -5,7 +5,7 @@ description = ""
 authors = ["Thomas Camminady <0milieux_member@icloud.com>"]
 
 [tool.poetry.dependencies]
-python = ">=3.8,<3.11"
+python = ">=3.8,<3.12"
 gpx-converter = "^2.1.0"
 numpy = "^1.24.2"
 pandas = "^1.5.3"

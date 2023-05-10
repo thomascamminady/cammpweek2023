@@ -13,8 +13,8 @@ init:
 	git lfs track "*.hdf5"
 	git lfs track "*.html"
 	git lfs track "*.parquet"
-	git lfs trakc "*.csv"
-	git lfs trakc "*.gpx"
+	git lfs track "*.csv"
+	git lfs track "*.gpx"
 	git add .
 	poetry run pre-commit run --all-files
 	git commit -am "Initial commit after initializing the project."

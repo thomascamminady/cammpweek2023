@@ -9,6 +9,14 @@ Automatic Climb Detection
 
 Install
 --------
+Before running ``make init``, make sure that all necessary components are installed.
+For MacOS this would be
+
+.. code-block:: bash
+
+   brew install git git-lfs poetry visual-studio-code
+
+
 To set up the project, simply run
 
 .. code-block:: bash
