@@ -17,6 +17,7 @@ init:
 	git lfs track "*.gpx"
 	git add .
 	poetry run pre-commit run --all-files
+	poetry run pre-commit install
 	git commit -am "Initial commit after initializing the project."
 	poetry shell
 
