@@ -26,6 +26,7 @@ def resample_dataframe_polars(
         `interpolation_column` is spaced as `interpolation_step` and all other
         data is interpolated onto that timeline.
     """
+    # Get the x-values onto which we want to interpolate the data.
     interpolation_points = pl.DataFrame(
         {
             interpolation_column: np.arange(
@@ -35,18 +36,25 @@ def resample_dataframe_polars(
             )
         }
     )
-
-    interpolated_df = interpolation_points.join(
+    # Add the new interpolation points to the input dataframe and interpolate the
+    # data onto those new interpolation points.
+    df_with_additional_data_at_interpolation_points = (
         interpolation_points.join(df, on=[interpolation_column], how="outer")
         .sort(interpolation_column)
-        .interpolate(),
+        .interpolate()
+    )
+
+    # After interpolation, we now have data at the new nodes. What's left is
+    # to only select those new interpolation nodes and the new data.
+    df_with_data_only_at_interpolation_points = interpolation_points.join(
+        df_with_additional_data_at_interpolation_points,
         on=[interpolation_column],
         how="left",
     ).sort(interpolation_column)
 
     # logger.info(f"Resampled from {len(df)} rows to {len(interpolated_df)} rows.")
 
-    return interpolated_df
+    return df_with_data_only_at_interpolation_points
 
 
 def resample_dataframe_grouped_polars(
